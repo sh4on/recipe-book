@@ -19,21 +19,21 @@ Before you begin, ensure you have met the following requirements:
 
 2. Configure your MySQL database by editing the application.properties file located in src/main/resources:
 
-properties
+	properties:
 
-spring.datasource.url=jdbc:mysql://localhost:3306/db_practice
+	spring.datasource.url=jdbc:mysql://localhost:3306/db_practice
 
-spring.datasource.username=root
+	spring.datasource.username=root
 
-spring.datasource.password=root
+	spring.datasource.password=root
 
 
 2. The application will be accessible at http://localhost:8080.
 
-Usage
+Usage:
 
-Create, edit, and delete authors.
+	Create, edit, and delete authors.
 
-Manage and share recipes.
+	Manage and share recipes.
 
-View a list of authors and their recipes.
+	View a list of authors and their recipes.
