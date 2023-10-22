@@ -19,7 +19,7 @@ Before you begin, ensure you have met the following requirements:
 
 2. Configure your MySQL database by editing the application.properties file located in src/main/resources:
 
-	properties:
+	Properties:
 
 	spring.datasource.url=jdbc:mysql://localhost:3306/db_practice
 
@@ -30,7 +30,7 @@ Before you begin, ensure you have met the following requirements:
 
 2. The application will be accessible at http://localhost:8080.
 
-Usage:
+	Usage:
 
 	Create, edit, and delete authors.
 
