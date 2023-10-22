@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Add New Recipe</title>
+  <style>
+    body {
+      background-color: #333; /* Dark gray background for the body */
+      margin: 0;
+      padding: 0;
+      color: white; /* Text color for the body */
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px;
+    }
+
+    form {
+      width: 80%;
+      margin: 20px auto;
+    }
+
+    label {
+      display: block;
+      padding: 10px;
+    }
+
+    select, input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .button-container {
+      text-align: center;
+      padding: 20px 0;
+    }
+  </style>
+</head>
+<body>
+<h1>Add New Recipe</h1>
+<form th:action="@{/recipes/update}" th:object="${recipe}" method="post">
+  <label for="recipeID">Recipe ID:</label>
+  <input type="text" th:field="*{recipeID}" id="recipeID" name="recipeID" required="required" />
+
+  <label for="recipeName">Recipe Name:</label>
+  <input type="text" th:field="*{recipeName}" id="recipeName" name="recipeName" required="required" />
+
+  <label for="ingredients">Ingredients:</label>
+  <input type="text" th:field="*{ingredients}" id="ingredients" name="ingredients" required="required" />
+
+  <label for="instructions">Instructions:</label>
+  <input type="text" th:field="*{instructions}" id="instructions" name="instructions" required="required" />
+
+  <label for="author">Author:</label>
+  <select th:field="*{author.authorID}" id="author" name="author.authorID">
+    <option th:each="author : ${authors}" th:value="${author.authorID}" th:text="${author.firstName + ' ' + author.lastName}">Author Name</option>
+  </select>
+  <div class="button-container">
+    <button type="submit">Update Recipe</button>
+  </div>
+</form>
+</body>
+</html>

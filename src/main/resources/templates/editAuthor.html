@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Edit Author Details</title>
+  <style>
+    body {
+      background-color: #333; /* Dark gray background for the body */
+      color: white; /* Text color for the body */
+      font-family: Arial, sans-serif; /* Set the font-family */
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px;
+    }
+
+    form {
+      width: 80%;
+      margin: 20px auto;
+    }
+
+    label {
+      display: block;
+      padding: 10px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .id-label {
+      color: red; /* Red text color for the ID field */
+    }
+
+    .button-container {
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .update-button {
+      background-color: #666;
+      border: 2px solid white;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<h1 th:text="'Edit Details of Author ' + ${author.firstName}">Edit Details of Author FirstName</h1>
+
+<form th:action="@{/authors/update}" th:object="${author}" method="post">
+  <label for="authorID">Author ID:</label>
+  <input type="text" th:field="*{authorID}" id="authorID" name="authorID" required="required" />
+  <p class="id-label">Don't change the ID</p>
+
+  <label for="firstName">First Name:</label>
+  <input type="text" th:field="*{firstName}" id="firstName" name="firstName" required="required" />
+
+  <label for="lastName">Last Name:</label>
+  <input type="text" th:field="*{lastName}" id="lastName" name="lastName"  />
+
+  <label for="phoneNumber">Phone Number:</label>
+  <input type="text" th:field="*{contactInformation.phoneNumber}" id="phoneNumber" name="contactInformation.phoneNumber" />
+
+  <label for="emailAddress">Email Address:</label>
+  <input type="text" th:field="*{contactInformation.emailAddress}" id="emailAddress" name="contactInformation.emailAddress" required="required"  />
+
+  <label for="streetAddress">Street Address:</label>
+  <input type="text" th:field="*{contactInformation.streetAddress}" id="streetAddress" name="contactInformation.streetAddress" required="required"  />
+
+  <label for="city">City:</label>
+  <input type="text" th:field="*{contactInformation.city}" id="city" name="contactInformation.city" required="required"  />
+
+  <label for="state">State:</label>
+  <input type="text" th:field="*{contactInformation.state}" id="state" name="contactInformation.state" required="required"  />
+
+  <label for="zipCode">Zip Code:</label>
+  <input type text th:field="*{contactInformation.zipCode}" id="zipCode" name="contactInformation.zipCode"  required="required" />
+
+  <label for="country">Country:</label>
+  <input type text th:field="*{contactInformation.country}" id="country" name="contactInformation.country"  required="required" />
+
+  <div class="button-container">
+    <button type="submit" class="update-button">Update Author</button>
+  </div>
+</form>
+</body>
+</html>

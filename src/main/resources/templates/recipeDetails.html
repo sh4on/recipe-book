@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text="'Details of Recipe ' + ${recipe.recipeName}"></title>
+  <style>
+    body {
+      background-color: #333; /* Dark gray background for the body */
+      margin: 0;
+      padding: 0;
+      color: white; /* Text color for the body */
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px;
+    }
+
+    table {
+      width: 80%;
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 2px solid white;
+    }
+
+    th, td {
+      padding: 10px;
+    }
+
+    th {
+      background-color: #666; /* Dark gray background for table headers */
+    }
+  </style>
+</head>
+<body>
+<h1 th:text="'Details of Recipe ' + ${recipe.recipeName}"></h1>
+<table>
+  <thead>
+  <tr>
+    <th>Recipe ID</th>
+    <th>Recipe Name</th>
+    <th>Ingredients</th>
+    <th>Instructions</th>
+    <th>Author Name</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td th:text="${recipe.recipeID}">Recipe ID</td>
+    <td th:text="${recipe.recipeName}">Recipe Name</td>
+    <td th:text="${recipe.ingredients}">Ingredients</td>
+    <td th:text="${recipe.instructions}">Instructions</td>
+    <td th:text="${recipe.author.firstName + ' ' + recipe.author.lastName}">Author Name</td>
+  </tr>
+  </tbody>
+</table>
+<div style="text-align: center; padding: 20px;">
+  <a th:href="@{/recipes}" style="color: white; text-decoration: none;">
+    <button>Back to Recipe List</button>
+  </a>
+</div>
+</body>
+</html>

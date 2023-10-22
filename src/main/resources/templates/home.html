@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Recipe Book</title>
+    <style>
+        body {
+            background-color: #333; /* Dark gray background for the body */
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333; /* Dark background color for the header */
+            color: white; /* Text color for the header links */
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white; /* Set text color of links to white */
+            font-size: 18px; /* Increase font size of links */
+        }
+
+        .centered-text {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .bordered-text {
+            border: 2px solid white; /* Set border color to white */
+            padding: 20px 100px; /* Increased horizontal padding for a longer box */
+            font-weight: bold; /* Make the text bold */
+            font-size: 24px; /* Increase font size of the centered text */
+            color: white; /* Set text color inside the box to white */
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a th:href="@{/authors}" target="_blank">Author</a></li>
+            <li><a th:href="@{/recipes}" target="_blank">Recipe</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="centered-text">
+    <h1><span class="bordered-text">Recipe Book</span></h1>
+</div>
+</body>
+</html>

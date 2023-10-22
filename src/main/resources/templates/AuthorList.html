@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>List of Authors</title>
+  <style>
+    body {
+      background-color: #333; /* Dark gray background for the body */
+      margin: 0;
+      padding: 0;
+      color: white; /* Text color for the body */
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px;
+    }
+
+    table {
+      width: 80%;
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 2px solid white;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #666; /* Dark gray background for table headers */
+    }
+
+    .icon {
+      font-size: 16px; /* Match link text size to First Name and Last Name */
+      color: white; /* Set link text color to white */
+    }
+
+    .message {
+      text-align: center; /* Center-align the message */
+      padding: 10px;
+    }
+
+    .button-container {
+      text-align: center;
+      padding: 20px 0 10px; /* Place button below the middle of the table */
+    }
+  </style>
+</head>
+<body>
+<h1>List of Authors</h1>
+<table>
+  <thead>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th style="color: white;">Details</th>
+    <th style="color: white;">Edit</th>
+    <th style="color: white;">Delete</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="author : ${authors}">
+    <td th:text="${author.firstName}">First Name</td>
+    <td th:text="${author.lastName}">Last Name</td>
+    <td><a th:href="@{/authors/{id}(id=${author.authorID})}"><span class="icon">View</span></a></td>
+    <td><a th:href="@{/authors/{id}/edit(id=${author.authorID})}"><span class="icon">Edit</span></a></td>
+    <td><a th:href="@{/authors/{id}/delete(id=${author.authorID})}"><span class="icon">Delete</span></a></td>
+  </tr>
+  </tbody>
+</table>
+<div class="button-container">
+  <a th:href="@{/authors/add}" style="color: white; text-decoration: none;"><button>Add New Author</button></a>
+</div>
+<div class="message" th:if="${message}">
+  <p th:text="${message}"></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Author Details</title>
+  <style>
+    body {
+      background-color: #333; /* Dark gray background for the body */
+      color: white; /* Text color for the body */
+      font-family: Arial, sans-serif; /* Set the font-family */
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px;
+    }
+
+    table {
+      width: 80%;
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 2px solid white;
+    }
+
+    th, td {
+      padding: 10px;
+    }
+
+    th {
+      background-color: #666; /* Dark gray background for table headers */
+    }
+
+    .button-container {
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .back-button {
+      background-color: #666;
+      border: 2px solid white;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<h1 th:text="'Details of Author ' + ${author.firstName}">Details of Author FirstName</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Author ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td th:text="${author.authorID}">Author ID</td>
+    <td th:text="${author.firstName}">First Name</td>
+    <td th:text="${author.lastName}">Last Name</td>
+  </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+  <tr>
+    <th>Contact Information</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      <strong>Phone Number:</strong> <span th:text="${author.contactInformation.phoneNumber}">Phone Number</span><br/>
+      <strong>Email Address:</strong> <span th:text="${author.contactInformation.emailAddress}">Email Address</span><br/>
+      <strong>Street Address:</strong> <span th:text="${author.contactInformation.streetAddress}">Street Address</span><br/>
+      <strong>City:</strong> <span th:text="${author.contactInformation.city}">City</span><br/>
+      <strong>State:</strong> <span th:text="${author.contactInformation.state}">State</span><br/>
+      <strong>Zip Code:</strong> <span th:text="${author.contactInformation.zipCode}">Zip Code</span><br/>
+      <strong>Country:</strong> <span th:text="${author.contactInformation.country}">Country</span>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+  <tr>
+    <th>Recipes</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="recipe : ${author.recipes}">
+    <td th:text="${recipe.recipeName}">Recipe Name</td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="button-container">
+  <a th:href="@{/authors}" class="back-button">Back to Author List</a>
+</div>
+</body>
+</html>
