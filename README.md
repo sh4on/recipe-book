@@ -22,14 +22,18 @@ Before you begin, ensure you have met the following requirements:
 properties
 
 spring.datasource.url=jdbc:mysql://localhost:3306/db_practice
+
 spring.datasource.username=root
+
 spring.datasource.password=root
-Build and run the application:
+
 
 2. The application will be accessible at http://localhost:8080.
 
 Usage
 
 Create, edit, and delete authors.
+
 Manage and share recipes.
+
 View a list of authors and their recipes.
