@@ -17,7 +17,7 @@ Before you begin, ensure you have met the following requirements:
 1. Clone this repository:
 
    ```bash
-   git clone git clone https://github.com/sh4on/recipe-book.git
+   git clone https://github.com/sh4on/recipe-book.git
 
 Configure your MySQL database by editing the application.properties file located in src/main/resources:
 
