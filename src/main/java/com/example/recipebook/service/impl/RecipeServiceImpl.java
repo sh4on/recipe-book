@@ -42,7 +42,6 @@ public class RecipeServiceImpl implements RecipeService {
         getRecipeById(recipe.getRecipeID());
 
         recipe.setAuthor(authorService.getAuthorById(recipe.getAuthor().getAuthorID()));
-
         recipeRepository.save(recipe);
     }
 

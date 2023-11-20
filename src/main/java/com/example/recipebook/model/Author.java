@@ -29,6 +29,6 @@ public class Author {
 
     private ContactInformation contactInformation;
 
-    @OneToMany(mappedBy = "author", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "author", cascade = {CascadeType.REMOVE, CascadeType.MERGE})
     private Set<Recipe> recipes;
 }

@@ -22,14 +22,16 @@ import java.util.Set;
 @SpringBootApplication
 public class RecipeBookManagementApplication implements CommandLineRunner {
 
+	@Autowired
+	private AuthorRepository authorRepository;
+
+	@Autowired
+	private RecipeRepository recipeRepository;
+
 	public static void main(String[] args) {
 		SpringApplication.run(RecipeBookManagementApplication.class, args);
 	}
 
-	@Autowired
-	private AuthorRepository authorRepository;
-
-	@Autowired RecipeRepository recipeRepository;
 
 	@Override
 	public void run(String... args) throws Exception {

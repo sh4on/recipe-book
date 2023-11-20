@@ -23,17 +23,6 @@ public class RecipeController {
     @Autowired
     private AuthorService authorService;
 
-    // Handles displaying a list of recipes.
-    @GetMapping
-    public String showAllRecipes(@RequestParam(required = false) String message, Model model) {
-        List<Recipe> recipes = recipeService.getAllRecipes();
-
-        model.addAttribute("recipes", recipes);
-        model.addAttribute("message", message);
-
-        return "recipeList";
-    }
-
     // Handles displaying the recipe creation form.
     @GetMapping("/add")
     public String addRecipe(Model model) {
@@ -54,29 +43,42 @@ public class RecipeController {
         String message = String.format("Recipe with ID %d saved successfully.", recipe.getRecipeID());
         attributes.addAttribute("message", message);
 
-        // Redirects to the recipe list with a success message after saving.
         return "redirect:/recipes";
     }
 
     // Handles displaying details of a single recipe.
     @GetMapping("/{id}")
-    public String showSingleRecipe(@PathVariable Long id, Model model, RedirectAttributes attributes) {
+    public String showRecipe(@PathVariable Long id, Model model, RedirectAttributes attributes) {
+        String page;
+
         try {
             Recipe recipe = recipeService.getRecipeById(id);
             model.addAttribute("recipe", recipe);
-
-            return "recipeDetails";
+            page = "recipeDetails";
         } catch (RecipeNotFoundException e) {
             attributes.addAttribute("message", e.getMessage());
-
-            // Redirects to the recipe list with a message if the recipe is not found.
-            return "redirect:/recipes";
+            page = "redirect:/recipes";
         }
+
+        return page;
+    }
+
+    // Handles displaying the list of recipes.
+    @GetMapping
+    public String showAllRecipes(@RequestParam(required = false) String message, Model model) {
+        List<Recipe> recipes = recipeService.getAllRecipes();
+
+        model.addAttribute("recipes", recipes);
+        model.addAttribute("message", message);
+
+        return "recipeList";
     }
 
     // Handles displaying the recipe edit form.
     @GetMapping("{id}/edit")
     public String editRecipe(@PathVariable Long id, Model model, RedirectAttributes attributes) {
+        String page;
+
         try {
             Recipe recipe = recipeService.getRecipeById(id);
             List<Author> authors = authorService.getAllAuthors();
@@ -84,13 +86,13 @@ public class RecipeController {
             model.addAttribute("recipe", recipe);
             model.addAttribute("authors", authors);
 
-            return "editRecipe";
+            page = "editRecipe";
         } catch (RecipeNotFoundException e) {
             attributes.addAttribute("message", e.getMessage());
-
-            // Redirects to the recipe list with a message if the recipe is not found.
-            return "redirect:/recipes";
+            page = "redirect:/recipes";
         }
+
+        return page;
     }
 
     // Handles updating a recipe's information.
@@ -101,15 +103,11 @@ public class RecipeController {
 
             String message = String.format("Recipe with ID %d updated successfully", recipe.getRecipeID());
             attributes.addAttribute("message", message);
-
-            // Redirects to the recipe list with a message after updating.
-            return "redirect:/recipes";
         } catch (RecipeNotFoundException e) {
             attributes.addAttribute("message", e.getMessage());
-
-            // Redirects to the recipe list with a message if the recipe is not found.
-            return "redirect:/recipes";
         }
+
+        return "redirect:/recipes";
     }
 
     // Handles deleting a recipe.
@@ -120,14 +118,10 @@ public class RecipeController {
 
             String message = String.format("Recipe with ID %d deleted successfully.", id);
             attributes.addAttribute("message", message);
-
-            // Redirects to the recipe list with a message after deleting.
-            return "redirect:/recipes";
         } catch (RecipeNotFoundException e) {
             attributes.addAttribute("message", e.getMessage());
-
-            // Redirects to the recipe list with a message if the recipe is not found.
-            return "redirect:/recipes";
         }
+
+        return "redirect:/recipes";
     }
 }
